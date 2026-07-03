@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap');
 
+/* 🌍 BASE */
 body {
     background-color: beige;
     text-align: center;
     font-family: Arial, sans-serif;
     padding-top: 100px;
     margin: 0;
+    transition: background 1.5s ease;
 }
 
 h1 {
@@ -13,6 +15,7 @@ h1 {
     font-size: 45px;
 }
 
+/* 🎛️ boutons */
 button {
     background-color: skyblue;
     color: white;
@@ -24,19 +27,80 @@ button {
     margin: 10px;
 }
 
+/* ✍️ texte machine */
 #texte {
     font-family: "Dancing Script", cursive;
     font-style: italic;
     font-size: 22px;
     margin-top: 20px;
+    line-height: 1.6;
 }
 
+/* 🎉 mode anniversaire */
 body.mode-anniversaire {
     background: radial-gradient(circle, #ffe6f0, #fff5cc);
-    transition: background 1.5s ease;
 }
 
-/* ⭐ ÉTOILES */
+/* 💌 message principal */
+#message {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 1s ease;
+}
+
+#message.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 📸 gallery */
+#gallery {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* 🖼️ photos */
+.photo {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.photo.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 💌 message final */
+#finalMessage {
+    margin-top: 20px;
+    font-size: 22px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease;
+    color: #d6336c;
+}
+
+#finalMessage.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ⭐ CONTAINER étoiles */
 #stars {
     position: fixed;
     top: 0;
@@ -47,10 +111,13 @@ body.mode-anniversaire {
     overflow: hidden;
 }
 
+/* ⭐ étoiles */
 .star {
     position: absolute;
     font-size: 14px;
     animation: floatStar 6s linear forwards;
+    pointer-events: none;
+    will-change: transform, opacity;
 }
 
 @keyframes floatStar {
@@ -66,6 +133,8 @@ body.mode-anniversaire {
         opacity: 0;
     }
 }
+
+/* 🦋 papillons */
 #butterflies {
     position: fixed;
     top: 0;
@@ -80,11 +149,13 @@ body.mode-anniversaire {
     position: absolute;
     font-size: 20px;
     animation: fly 8s linear forwards;
+    pointer-events: none;
+    will-change: transform, opacity;
 }
 
 @keyframes fly {
     0% {
-        transform: translateY(100vh) translateX(0);
+        transform: translateY(100vh);
         opacity: 0;
     }
     20% {
@@ -95,88 +166,14 @@ body.mode-anniversaire {
         opacity: 0;
     }
 }
-#message {
-    opacity: 0;
-    transform: scale(0.8);
-    transition: all 1s ease;
-}
 
-#message.show {
-    opacity: 1;
-    transform: scale(1);
-}
-.photo {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 10px;
-
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease;
-}
-
-.photo.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-#gallery {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-body {
-    transition: background 1.5s ease;
-}
-.star, .butterfly {
-    pointer-events: none;
-    will-change: transform, opacity;
-}
-.photo {
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-#finalMessage {
-    margin-top: 20px;
-    font-size: 22px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 1s ease;
-    color: #d6336c;
-}
-
-#finalMessage.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-#message {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-}
-
-#texte {
-    line-height: 1.6;
-}
-
-#gallery {
-    margin-top: 20px;
-    gap: 12px;
-}
-
-.photo {
-    width: 100px;
-    height: 100px;
-}
-
+/* 📱 mobile */
 @media (max-width: 600px) {
     h1 {
         font-size: 28px;
     }
 
-    p {
+    #texte {
         font-size: 18px;
     }
 
